@@ -1,0 +1,18 @@
+
+services:
+
+  personal_assistant:
+    build: ./agent
+    container_name: personal_assistant
+    hostname: personal_assistant
+    ports:
+      - "8502:8502"
+    restart: unless-stopped
+    volumes:
+      - ./agent/:/app
+    networks:
+      - agent_net
+
+networks:
+  agent_net:
+    driver: bridge
